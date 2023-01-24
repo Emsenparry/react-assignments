@@ -1,73 +1,52 @@
-import { useState } from "react";
+import { useState } from "react"
 
 const Form = () => {
-  const [contactInfo, setContactInfo] = useState({
-    name: "",
-    phonenumber: "",
-    email: "",
-    comments: "",
-  });
+    const [fullname, setFullName] = useState()
+    const [number, setNumber] = useState()
+    const [email, setEmail] = useState()
+    const [comment, setComment] = useState()
 
-  const handleChange = (event) => {
-    setContactInfo({ ...contactInfo, [event.target.name]: event.target.value });
-  };
 
-  const handleSubmit = (event) => {
-    // prevents the submit button from refreshing the page
-    event.preventDefault();
-    setContactInfo({ name: "", email: "", phonenumber: "", comments: "" });
-  };
 
-  return (
-    <>
-      <form onSubmit={handleSubmit}>
+    return (
         <div>
-          <h3>Kontakt Form</h3>
+            <form>
+                <h1>Contact Form</h1>
+                <div>
+                    <label htmlFor="fullname">Fulde navn</label>
+                    <input type="text" name="fullname" id="fullname" onChange={e => { setFullName(e.target.value) }}/>
+                </div>
+                <div>
+                    <label htmlFor="number">Telefonnummer</label>
+                    <input type="number" name="number" id="number" onChange={e => { setNumber(e.target.value) }}/>
+                </div>
+                <div>
+                    <label htmlFor="email">Email</label>
+                    <input type="email" name="email" id="email" onChange={e => { setEmail(e.target.value) }}/>
+                </div>
+                <div>
+                    <label htmlFor="comment">Kommentar</label>
+                    <textarea type="text" name="comment" id="comment" onChange={e => { setComment(e.target.value) }}/>
+                </div>
+                <div>
+                    <input type="checkbox" />
+                    <input type="checkbox" />
+                </div>
+                <div>
+                    <button type="reset">Nulstil</button>
+                    <button type="submit">Send</button>
+                </div>
+            </form>
+            <section>
+                <ul>
+                    <li>Fulde navn: {fullname}</li>
+                    <li>Telfonnummer: {number}</li>
+                    <li>Email: {email}</li>
+                    <li>Kommentar: {comment}</li>
+                </ul>
+            </section>
         </div>
-        <div>
-          <input
-            type="text"
-            name="name"
-            placeholder="Fulde navn"
-            value={contactInfo.name}
-            onChange={handleChange}
-          />
-          <input
-            type="number"
-            name="phonenumber"
-            placeholder="Telefon nummer"
-            value={contactInfo.phonenumber}
-            onChange={handleChange}
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={contactInfo.email}
-            onChange={handleChange}
-          />
-          <textarea
-            name="comments"
-            cols="30"
-            rows="10"
-            placeholder="Skriv dine kommentarer her"
-            value={contactInfo.comments}
-            onChange={handleChange}
-          ></textarea>
-        </div>
+    )
+}
 
-        <div>
-          <input type="checkbox" />
-          <input type="checkbox" />
-        </div>
-
-        <div>
-          <button type="reset">Reset</button>
-          <button type="submit">Send</button>
-        </div>
-      </form>
-    </>
-  );
-};
-
-export default Form;
+export default Form
