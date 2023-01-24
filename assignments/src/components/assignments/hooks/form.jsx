@@ -1,32 +1,38 @@
 import { useState } from "react"
 
 const Form = () => {
-    const [fullname, setFullName] = useState()
-    const [number, setNumber] = useState()
-    const [email, setEmail] = useState()
-    const [comment, setComment] = useState()
+    const [form, setForm] = useState({}, {
+        fullname: '...',
+        number: '...',
+        email: '...',
+        comment: '...'
+    })
 
-
+    const registerInput = e => {
+        setForm(prevState => {
+            return { ...prevState, [e.target.value] : e.target.value}
+        })
+    }
 
     return (
-        <div>
+        <div className="maindiv">
             <form>
                 <h1>Contact Form</h1>
                 <div>
                     <label htmlFor="fullname">Fulde navn</label>
-                    <input type="text" name="fullname" id="fullname" onChange={e => { setFullName(e.target.value) }}/>
+                    <input type="text" name="fullname" id="fullname" onChange={registerInput}/>
                 </div>
                 <div>
                     <label htmlFor="number">Telefonnummer</label>
-                    <input type="number" name="number" id="number" onChange={e => { setNumber(e.target.value) }}/>
+                    <input type="number" name="number" id="number" onChange={registerInput}/>
                 </div>
                 <div>
                     <label htmlFor="email">Email</label>
-                    <input type="email" name="email" id="email" onChange={e => { setEmail(e.target.value) }}/>
+                    <input type="email" name="email" id="email" onChange={registerInput}/>
                 </div>
                 <div>
                     <label htmlFor="comment">Kommentar</label>
-                    <textarea type="text" name="comment" id="comment" onChange={e => { setComment(e.target.value) }}/>
+                    <textarea type="text" name="comment" id="comment" onChange={registerInput}/>
                 </div>
                 <div>
                     <input type="checkbox" />
@@ -39,10 +45,10 @@ const Form = () => {
             </form>
             <section>
                 <ul>
-                    <li>Fulde navn: {fullname}</li>
-                    <li>Telfonnummer: {number}</li>
-                    <li>Email: {email}</li>
-                    <li>Kommentar: {comment}</li>
+                    <li>Fulde navn: {form.fullname}</li>
+                    <li>Telfonnummer: {form.number} </li>
+                    <li>Email: {form.email}</li>
+                    <li>Kommentar: {form.comment}</li>
                 </ul>
             </section>
         </div>
