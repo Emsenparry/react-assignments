@@ -10,8 +10,9 @@ const Form = () => {
 
     const registerInput = e => {
         setForm(prevState => {
-            return { ...prevState, [e.target.value] : e.target.value}
+            return { ...prevState, [e.target.name]: e.target.value}
         })
+        console.log(form);
     }
 
     return (
@@ -57,4 +58,4 @@ const Form = () => {
     )
 }
 
-export default Form
+export { Form }
