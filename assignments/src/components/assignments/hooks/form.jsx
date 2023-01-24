@@ -35,7 +35,9 @@ const Form = () => {
                     <textarea type="text" name="comment" id="comment" onChange={registerInput}/>
                 </div>
                 <div>
+                    <label htmlFor="">Vil gerne kontaktes på email</label>
                     <input type="checkbox" />
+                    <label htmlFor="">Vil gerne kontaktes på telefon</label>
                     <input type="checkbox" />
                 </div>
                 <div>
