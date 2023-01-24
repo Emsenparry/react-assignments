@@ -1,10 +1,27 @@
-.App {
-  text-align: center;
-}
-
 
 textarea{
   resize: none;
+}
+
+input[type=checkbox] {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+  margin: 0;
+  accent-color: rgb(77, 192, 77);
+}
+
+.formlabels{
+  max-width: 100%;
+    label{
+      display: block;
+      padding-top: 0.5em;
+    }
+}
+.checkboxes{
+  label{
+    padding-left: 0.5em;
+  }
 }
 
 ul{
