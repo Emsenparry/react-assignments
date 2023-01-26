@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from 'axios'
+import { Link } from "react-router-dom";
 
 const GoalList = () => {
     const [apiData, setApiData] = useState([])
@@ -19,7 +20,7 @@ const GoalList = () => {
             <ul>
                 {apiData && apiData.map(value => {
                     return(
-                        <li key={value.id}>{value.title}</li>
+                        <li key={value.id}><Link to={`/goals/${value.id}`}>{value.title}</Link></li>
                     )
                 })}
             </ul>
